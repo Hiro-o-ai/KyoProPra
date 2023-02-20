@@ -2,9 +2,10 @@
 using namespace std;
 
 int main() {
-  int N;
-  int A;
+  int A, B;
   
-  cin >> N >> A;
-  cout << N * N - A << endl;
+  cin >> A >> B;
+  int sum = A * B; 
+  if(sum % 2 == 0) cout << "EVEN" << endl;
+  else cout << "ODD" << endl;
 }
