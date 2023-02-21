@@ -6,6 +6,6 @@ int main() {
 
     cin >> N >> A;
     int rest = N % 500;
-    if(rest <= A) cout << "YES" << endl;
-    else cout << "NO" << endl;
+    if(rest <= A) cout << "Yes" << endl;
+    else cout << "No" << endl;
 }
