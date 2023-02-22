@@ -8,15 +8,16 @@ int main() {
 
     cin >> s >> t;
     
-    // 最終出力
-    string answer = "No";
     // ソート
     // 入力値を降順
     sort(s.begin(), s.end());
     // 入力値を昇順
-    sort(t.begin(), t.end(), greater<int>());
+    sort(t.begin(), t.end());
+    reverse(t.begin(), t.end());
 
-    if(s < t ) answer = "Yes";
-
-    cout << answer << endl;
+    if(s < t ) {
+        cout << "Yes" << endl;
+    } else {
+        cout << "No" << endl;
+    }     
 }
