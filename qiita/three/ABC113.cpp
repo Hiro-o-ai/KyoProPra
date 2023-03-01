@@ -2,7 +2,8 @@
 using namespace std;
 
 int main() {
-    int N, T, A, H, diff, tmp, res;
+    int N, T, A, H, res;
+    double diff, tmp;
 
     cin >> N >> T >> A;
     for (int i = 0; i < N; ++i) {
