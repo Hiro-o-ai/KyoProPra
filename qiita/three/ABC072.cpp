@@ -13,3 +13,9 @@ int main() {
 
     cout << res << endl;
 }
+
+// int main(){
+//   string S; cin >> S;
+//   for(int i=0;i<S.size(); i=i+2) cout << S[i];
+//   return 0;
+// }
