@@ -22,9 +22,10 @@ int main () {
                 int diff = abs(x[i][k] - x[j][k]);
                 sum += diff * diff;
             }
-            
+            double sq = sqrt(sum);
+            if(ceil(sq) == floor(sq)) res += 1; 
         }
     }
 
-    // cout << x << endl;
+    cout << res << endl;
 }
