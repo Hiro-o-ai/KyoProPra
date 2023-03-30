@@ -20,3 +20,6 @@ int main() {
 
     return 0;
 }
+
+// int a[110];
+// sort(a, a + N, greater<int>());
