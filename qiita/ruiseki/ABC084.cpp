@@ -3,6 +3,8 @@ using namespace std;
 
 bool isprime(int N) {
     if(N < 2) return false; 
+    // https://algo-method.com/descriptions/93
+    // ↑は i*i <= Nでいい理由
     for(int i = 2; i*i <= N; i++){
         if(N % i == 0) return false;
     }
