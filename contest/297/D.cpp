@@ -7,7 +7,7 @@ int main() {
     long long res = 0;
     if(A < B) swap(A, B);
     
-    while(B > 0 ){
+    while(B > 0){
         res += A / B;
         A %= B;
         if(A < B) swap(A, B);
