@@ -5,19 +5,15 @@ int main() {
     long long A, B;
     cin >> A >> B;
     long long res = 0;
+    if(A < B) swap(A, B);
     
-    while(A - B != 0 ){
-        if(A - B > 0){
-            res += (A + B - 1) / B;
-            A %= B;
-        } else {
-            res += (B + A - 1) / A;
-            B %= A;
-        }
-        cout << "tes  ";
+    while(B > 0 ){
+        res += A / B;
+        A %= B;
+        if(A < B) swap(A, B);
     }
 
-    cout << res << endl;
+    cout << res - 1 << endl;
     
     return 0;
 }
