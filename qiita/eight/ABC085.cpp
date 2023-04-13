@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 800ms
 int main() {
     int N, Y;
     cin >> N >> Y;
@@ -25,7 +26,7 @@ int main() {
     return 0;
 }
 
-// 回答例
+// 回答例   8ms
 // int main() {
 //     int N, Y;
 //     cin >> N >> Y;
