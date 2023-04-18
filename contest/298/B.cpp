@@ -1,91 +1,41 @@
-// #include <bits/stdc++.h>
-// using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
 
-// int main() {
-//     int N;
-//     vector<vector<int>> A1(N, vector<int>(N));
-//     vector<vector<int>> A2(N, vector<int>(N));
-//     vector<vector<int>> A3(N, vector<int>(N));
-//     vector<vector<int>> A4(N, vector<int>(N));
-//     vector<vector<int>> B(N, vector<int>(N));
-//     cin >> N;
+vector<vector<int>> rotate(vector<vector<int>> a) {
+    int n = a.size();
+    vector<vector<int>> res(n, vector<int>(n));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            // もともとは n + 1 - j だが、vectorは 0 〜 N - 1 なので、a.size() ==  N となるため n + 1 == Nとなる。
+            // また、0 〜 N - 1 なので、 N - 1 をしないと初期に設定したvectorのインデックス数を超えるため n - 1 としなければいけない。
+            res[n - 1 - j][i] = a[i][j];
+        }
+    }
 
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             cin >> A1[i][j];
-//         }
-//     }
-    
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             cin >> B[i][j];
-//         }
-//     }
+    return res;
+}
 
-//     bool check = true;
+int main() {
+    int N;
+    cin >> N;
+    vector<vector<int>> A(N, vector<int>(N));
+    for(int i = 0; i < N; i++)for(int j = 0; j < N; j++) cin >> A[i][j];
+    vector<vector<int>> B(N, vector<int>(N));
+    for(int i = 0; i < N; i++) for(int j = 0; j < N; j++) cin >> B[i][j];    
 
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             if(A1[i][j] != B[i][j]){
-//                 check = false;
-//             }
-//             A2[N + 1 -j][i] = A1[i][j];
-//         }
-//     }
+    int cnt = 4;
+    while(cnt > 0){
+        bool b = true;
+        for(int i = 0; i < N; i++) for(int j = 0; j < N; j++) if (A[i][j] == 1 && B[i][j] == 0) b = false;
+        if(b){
+            cout << "Yes" << endl;
+            return 0;
+        }
 
-//     if(check){
-//         cout << "Yes" << endl;
-//         return 0;
-//     }
+        A = rotate(A);
 
-//     check = true;
+        --cnt;
+    }
 
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             if(A2[i][j] != B[i][j]){
-//                 check = false;
-//             }
-//             A3[N + 1 -j][i] = A2[i][j];
-//         }
-//     }
-
-//     if(check){
-//         cout << "Yes" << endl;
-//         return 0;
-//     }
-
-//     check = true;
-
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             if(A3[i][j] != B[i][j]){
-//                 check = false;
-//             }
-//             A4[N + 1 -j][i] = A3[i][j];
-//         }
-//     }
-
-//     if(check){
-//         cout << "Yes" << endl;
-//         return 0;
-//     }
-
-//     check = true;
-
-//     for(int i = 0; i < N; i++){
-//         for(int j = 0; j < N; j++){
-//             if(A4[i][j] != B[i][j]){
-//                 check = false;
-//                 break;
-//             }
-//         }
-//     }
-
-//     if(check){
-//         cout << "Yes" << endl;
-//         return 0;
-//     }else {
-//         cout << "No" << endl;
-//         return 0;
-//     }
-// }
+    cout << "No" << endl;
+}
