@@ -49,10 +49,9 @@ using mint = modint998244353;
 using namespace std;
 
 int main() {
-	
 	int Q;
 	cin>>Q;
-    
+    int MOD = 998244353;
 	deque<int> S(1,1);
 	mint ans = 1;
 	
@@ -64,11 +63,15 @@ int main() {
 			cin>>x;
 			S.push_back(x);
 			ans = ans*10 + x;
+			// ans = (ans * 10 + x) % MOD;
 		}
 		if(t==2){
-			cout << ans.val() << endl;
+			// これではうまくいかない。なぜならansの値がlong long の数値すら超えてしまうため
+			// だから、ansにはmodを入れる必要がある。
+			// ただし、その場合にはans -= pow(10,S.size()-1) * S.front();をすると998244353よりも大きい値だった時にズレが生じる
+			// ex: 2111111111 から 111111111 となる場合 ansには114,622,405が入っており、それをans -= powでやると答えがズレるということ
+			// ans -= pow(10,S.size()-1) * S.front();
 			ans -= mint(10).pow(S.size()-1) * S.front();
-			cout << ans.val() << endl;
 			S.pop_front();
 		}
 		if(t==3){
@@ -78,3 +81,13 @@ int main() {
 	
 	return 0;
 }
+// modとpowをくみあわせるにはこんなのが必要
+// long long qp(long long a,long long b){
+//     long long ans = 1;
+//     while(b){
+//         if(b&1) ans = ans*a%mod;
+//         a = a*a%mod;
+//         b >>= 1;
+//     }
+//     return ans;
+// }
