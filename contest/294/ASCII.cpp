@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//  計算量 O(N2)
 int main(){
     int H, W;
 
